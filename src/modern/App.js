@@ -12,7 +12,9 @@ import {
   BrowserRouter,
   Switch
 } from 'react-router-dom';
+import ContainersPage from './pages/containers';
 import HomePage from './pages/home';
+import IconsButtonsPage from './pages/icons-buttons';
 import InputsPage from './pages/inputs';
 
 export default function App() {
@@ -33,6 +35,12 @@ export default function App() {
         <Switch>
           <Route path="/inputs">
             <InputsPage />
+          </Route>
+          <Route path="/containers">
+            <ContainersPage />
+          </Route>
+          <Route path="/iconsbutton">
+            <IconsButtonsPage />
           </Route>
           <Route path="/">
             <HomePage />

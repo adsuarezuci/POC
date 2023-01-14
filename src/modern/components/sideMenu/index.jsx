@@ -1,8 +1,7 @@
 import React from 'react'
-import { Box, Card, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack, styled, Typography } from '@mui/material'
+import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
 import { Home } from '@mui/icons-material'
 import MailIcon from '@mui/icons-material/Mail'
-import { Link } from 'react-router-dom'
 import { StyleLink, StyleMenuTitleWrapper, StyleMenuWrapper } from './styles'
 
 
@@ -37,6 +36,28 @@ const SideMenu = () => {
             </ListItemButton>
           </ListItem>
         </StyleLink> 
+
+        <StyleLink to='/containers'>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <MailIcon color='secondary' />
+              </ListItemIcon>
+              <ListItemText primary='Containers' />
+            </ListItemButton>
+          </ListItem>
+        </StyleLink>
+
+        <StyleLink to='/iconsbutton'>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <MailIcon color='secondary' />
+              </ListItemIcon>
+              <ListItemText primary='Icons-Buttons' />
+            </ListItemButton>
+          </ListItem>
+        </StyleLink>
       </List>      
     </StyleMenuWrapper>
   )
