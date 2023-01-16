@@ -1,18 +1,31 @@
 import React, { useState } from 'react'
-import { Card, Checkbox, FormControl, FormControlLabel, FormLabel, Grid, InputLabel, MenuItem, Radio, RadioGroup, Select, Stack, Switch, TextField, Typography } from '@mui/material'
+import { 
+  Card, 
+  Checkbox, 
+  FormControl, 
+  FormControlLabel, 
+  FormLabel, Grid, InputLabel, 
+  MenuItem, Radio, RadioGroup, Select, Switch, 
+  TextField, Typography } from '@mui/material'
+import { connect } from 'react-redux'
+import { changeValueInput, changeSelectInput, changeBoolInput } from '../../../redux/inputs/index'
 
-const Inputs = () => {
-  const [value, setValue] = useState('')
-  const [select, setSelect] = useState('')
-  const [boolValue, setBoolean] = useState(false)
-
+const Inputs = ({
+  value,
+  select,
+  boolValue,
+  setValue,
+  setSelect,
+  setBoolean
+}) => {
+  console.log(typeof select, select)
   const handleSelectChange = (event) => {
     setSelect(event.target.value)
   }
 
   return (
     <Card  elevation={5} sx={{ padding: 3 }}>
-      <Typography variant='h6'>Inputs Modern With React {React.version}</Typography>
+      <Typography variant='h6'>Modern Inputs With React {React.version}</Typography>
       <Grid container spacing={3} mt={1}>
         <Grid item xs={12}>
           <TextField
@@ -33,9 +46,9 @@ const Inputs = () => {
                 label="Age"
                 onChange={handleSelectChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="10">Ten</MenuItem>
+              <MenuItem value="20">Twenty</MenuItem>
+              <MenuItem value="30">Thirty</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -60,12 +73,13 @@ const Inputs = () => {
             <FormLabel id="demo-radio-buttons-group-label-modern">Gender</FormLabel>
             <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label-modern"
-                defaultValue="female"
+                defaultValue={select}
                 name="radio-buttons-group-modern"
+                onChange={handleSelectChange}
             >
-                <FormControlLabel value="female" control={<Radio/>} label="Female" />
-                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                <FormControlLabel value="other" control={<Radio />} label="Other" />
+              <FormControlLabel value="10" control={<Radio/>} label="Ten" />
+              <FormControlLabel value="20" control={<Radio />} label="Twenty" />
+              <FormControlLabel value="30" control={<Radio />} label="Thirty" />
             </RadioGroup>
           </FormControl>
         </Grid>
@@ -88,4 +102,17 @@ const Inputs = () => {
   )
 }
 
-export default Inputs
+const mapStateToProps = (state) => {
+  return {
+    value: state.inputs.value,
+    select: state.inputs.select,
+    boolValue: state.inputs.boolValue
+  }
+}
+const mapDispatchToProps = {
+  setValue: changeValueInput,
+  setBoolean: changeBoolInput,
+  setSelect: changeSelectInput
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inputs)
