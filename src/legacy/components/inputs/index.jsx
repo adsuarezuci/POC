@@ -5,19 +5,21 @@ import { Card,
     Typography } from '@material-ui/core'
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeBoolInput, changeSelectInput, changeValueInput } from '../../../redux/inputs'
+import { changeBoolInput, changeSelectInput, changeSlideInput, changeValueInput } from '../../../redux/inputs'
+import Slider from '@material-ui/lab/Slider'
 
 const Inputs = ({
   value,
   select,
   boolValue,
+  slideValue,
   setValue,
   setSelect,
-  setBoolean
+  setBoolean,
+  setSlide
 }) => {
 
   const handleSelectChange = (event) => {
-    console.log(event.target.value)
     setSelect(event.target.value)
   }
   return (
@@ -72,11 +74,12 @@ const Inputs = ({
             <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
             <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue={select}
+                defaultValue=''
+                value={select}
                 name="radio-buttons-group"
                 onChange={handleSelectChange}
             >
-                <FormControlLabel value="10" control={<Radio color='primary'/>} label="Ten" />
+               <FormControlLabel value="10" control={<Radio color='primary'/>} label="Ten" />
               <FormControlLabel value="20" control={<Radio color='primary' />} label="Twenty" />
               <FormControlLabel value="30" control={<Radio color='primary' />} label="Thirty" />
             </RadioGroup>
@@ -96,6 +99,12 @@ const Inputs = ({
             }}
           />
         </Grid>
+        <Grid item xs={12}>
+          <Slider 
+            value={slideValue}
+            onChange={(e, value) => setSlide(value)}
+          />
+        </Grid>
       </Grid>
     </Card>
     
@@ -106,13 +115,15 @@ const mapStateToProps = (state) => {
   return {
     value: state.inputs.value,
     select: state.inputs.select,
-    boolValue: state.inputs.boolValue
+    boolValue: state.inputs.boolValue,
+    slideValue: state.inputs.slideValue
   }
 }
 const mapDispatchToProps = {
   setValue: changeValueInput,
   setBoolean: changeBoolInput,
-  setSelect: changeSelectInput
+  setSelect: changeSelectInput,
+  setSlide: changeSlideInput
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inputs)

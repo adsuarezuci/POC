@@ -1,4 +1,10 @@
-import { initialState, SET_BOOL_VALUE, SET_SELECT_VALUE, SET_VALUE } from "./constants"
+import { 
+  initialState, 
+  SET_BOOL_VALUE, 
+  SET_SELECT_VALUE, 
+  SET_SLIDE_VALUE, 
+  SET_VALUE 
+} from "./constants"
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -16,6 +22,11 @@ export const reducer = (state = initialState, action) => {
         return {
             ...state,
             boolValue: action.payload
+          }
+      case SET_SLIDE_VALUE:
+        return {
+            ...state,
+            slideValue: action.payload
           }
       default:
         return state

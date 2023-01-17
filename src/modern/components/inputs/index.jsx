@@ -5,20 +5,21 @@ import {
   FormControl, 
   FormControlLabel, 
   FormLabel, Grid, InputLabel, 
-  MenuItem, Radio, RadioGroup, Select, Switch, 
+  MenuItem, Radio, RadioGroup, Select, Slider, Switch, 
   TextField, Typography } from '@mui/material'
 import { connect } from 'react-redux'
-import { changeValueInput, changeSelectInput, changeBoolInput } from '../../../redux/inputs/index'
+import { changeValueInput, changeSelectInput, changeBoolInput, changeSlideInput } from '../../../redux/inputs/index'
 
 const Inputs = ({
   value,
   select,
   boolValue,
+  slideValue,
   setValue,
   setSelect,
-  setBoolean
+  setBoolean,
+  setSlide
 }) => {
-  console.log(typeof select, select)
   const handleSelectChange = (event) => {
     setSelect(event.target.value)
   }
@@ -73,7 +74,8 @@ const Inputs = ({
             <FormLabel id="demo-radio-buttons-group-label-modern">Gender</FormLabel>
             <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label-modern"
-                defaultValue={select}
+                defaultValue=''
+                value={select}
                 name="radio-buttons-group-modern"
                 onChange={handleSelectChange}
             >
@@ -97,6 +99,14 @@ const Inputs = ({
             }}
           />
         </Grid>
+        <Grid item xs={12}>
+          <Slider 
+            value={slideValue}
+            aria-label="Default" 
+            valueLabelDisplay="auto" 
+            onChange={(e) => setSlide(e.target.value)}
+          />
+        </Grid>
       </Grid>
     </Card>
   )
@@ -106,13 +116,15 @@ const mapStateToProps = (state) => {
   return {
     value: state.inputs.value,
     select: state.inputs.select,
-    boolValue: state.inputs.boolValue
+    boolValue: state.inputs.boolValue,
+    slideValue: state.inputs.slideValue
   }
 }
 const mapDispatchToProps = {
   setValue: changeValueInput,
   setBoolean: changeBoolInput,
-  setSelect: changeSelectInput
+  setSelect: changeSelectInput,
+  setSlide: changeSlideInput
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inputs)

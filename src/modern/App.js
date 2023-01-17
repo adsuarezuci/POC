@@ -39,9 +39,6 @@ export default function App() {
           <Route path="/containers">
             <ContainersPage />
           </Route>
-          <Route path="/iconsbutton">
-            <IconsButtonsPage />
-          </Route>
           <Route path="/">
             <HomePage />
           </Route>

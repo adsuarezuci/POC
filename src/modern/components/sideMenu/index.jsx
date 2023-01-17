@@ -47,17 +47,6 @@ const SideMenu = () => {
             </ListItemButton>
           </ListItem>
         </StyleLink>
-
-        <StyleLink to='/iconsbutton'>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <MailIcon color='secondary' />
-              </ListItemIcon>
-              <ListItemText primary='Icons-Buttons' />
-            </ListItemButton>
-          </ListItem>
-        </StyleLink>
       </List>      
     </StyleMenuWrapper>
   )

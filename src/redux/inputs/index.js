@@ -1,6 +1,7 @@
 import { 
     SET_BOOL_VALUE, 
     SET_SELECT_VALUE, 
+    SET_SLIDE_VALUE, 
     SET_VALUE 
 } from "./constants"
 
@@ -17,5 +18,9 @@ export const changeSelectInput = (value) => ({
 
 export const changeBoolInput = (value) => ({
   type: SET_BOOL_VALUE,
+  payload: value
+})
+export const changeSlideInput = (value) => ({
+  type: SET_SLIDE_VALUE,
   payload: value
 })
