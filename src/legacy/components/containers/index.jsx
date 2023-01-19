@@ -1,6 +1,7 @@
 import { AppBar, Button, Grid, IconButton, Tab, Tabs, Typography } from '@material-ui/core'
-import React from 'react'
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import {__RouterContext} from 'react-router'
 import DrawerComponent from '../drawer';
 import { AddShoppingCart, Alarm, Delete,  } from '@material-ui/icons'
 
@@ -14,9 +15,7 @@ function TabContainer(props) {
 
 const Containers = () => {
   const [value, setValue] = React.useState(0)
-  const location = useLocation()
-  const history = useHistory()
-  console.log(React.version+' history',history)
+  const router = useContext(__RouterContext)
   return (
     <div>
       <Typography variant='h6'>Legacy Containers From React {React.version}</Typography>
@@ -58,9 +57,9 @@ const Containers = () => {
                   fontSize: '1rem'
                 }}
               >
-                <Button onClick={() => history.push('/')}>Home</Button>
-                <Button onClick={() => window.location.assign('/inputs')}>Inputs</Button>
-                <Button onClick={() => history.push('/containers')}>Containers</Button>
+                <Button onClick={() => router.history.push('/')}>Home</Button>
+                <Button onClick={() => router.history.push('/inputs')}>Inputs</Button>
+                <Button onClick={() => router.history.push('/containers')}>Containers</Button>
               </div>
             </Grid>
           </Grid>
