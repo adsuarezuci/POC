@@ -52,7 +52,7 @@ class AboutSection extends Component {
 }
 
 function mapStateToProps(state) {
-  return {counter: state};
+  return {counter: state.default};
 }
 
 export default connect(mapStateToProps)(AboutSection);
