@@ -8,7 +8,7 @@ import {
   MenuItem, Radio, RadioGroup, Select, Slider, Switch, 
   TextField, Typography } from '@mui/material'
 import { connect } from 'react-redux'
-import { changeValueInput, changeSelectInput, changeBoolInput, changeSlideInput } from '../../../redux/inputs/index'
+import { changeValueInput, changeSelectInput, changeBoolInput, changeSlideInput } from '../../redux/inputs'
 
 const Inputs = ({
   value,

@@ -5,7 +5,7 @@ import { Card,
     Typography } from '@material-ui/core'
 import React from 'react'
 import { connect } from 'react-redux'
-import { changeBoolInput, changeSelectInput, changeSlideInput, changeValueInput } from '../../../redux/inputs'
+import { changeBoolInput, changeSelectInput, changeSlideInput, changeValueInput } from '../../../modern/redux/inputs'
 import Slider from '@material-ui/lab/Slider'
 
 const Inputs = ({

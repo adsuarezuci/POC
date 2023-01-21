@@ -9,7 +9,7 @@
  import {StrictMode} from 'react';
  import {Provider} from 'react-redux';
  import App from './App';
- import {store} from '../store';
+ import { store } from './redux/store';
  import MuiTheme from './theme/MuiTheme';
  import { createRoot } from "react-dom/client";
  
